@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<title>Graphs</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+</head>
+<body>
+	<div id="smoke" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<br><Br>
+	<div id="temp" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<br><Br>
+	<div id="light" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<br><Br>
+	<script type="text/javascript">
+		$.getJSON(
+  './data/smoke.json',
+  function (data) {
+
+    Highcharts.chart('smoke', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'Smoke'
+      },
+      subtitle: {
+        text: document.ontouchstart === undefined ?
+            'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Smoke Level'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, Highcharts.getOptions().colors[0]],
+              [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        }
+      },
+
+      series: [{
+        type: 'area',
+        name: 'Smoke',
+        data: data
+      }]
+    });
+  }
+);
+
+
+
+
+
+		$.getJSON(
+  './data/temp.json',
+  function (data) {
+
+    Highcharts.chart('temp', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'Temperature'
+      },
+      subtitle: {
+        text: document.ontouchstart === undefined ?
+            'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Celsius'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, Highcharts.getOptions().colors[0]],
+              [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        }
+      },
+
+      series: [{
+        type: 'area',
+        name: 'Celsius',
+        data: data
+      }]
+    });
+  }
+);
+
+
+
+
+
+
+
+
+		$.getJSON(
+  './data/light.json',
+  function (data) {
+
+    Highcharts.chart('light', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'Light Intensity'
+      },
+      subtitle: {
+        text: document.ontouchstart === undefined ?
+            'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'Light Intensity'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, Highcharts.getOptions().colors[0]],
+              [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        }
+      },
+
+      series: [{
+        type: 'area',
+        name: 'Light Intensity',
+        data: data
+      }]
+    });
+  }
+);
+	</script>
+</body>
+</html>
