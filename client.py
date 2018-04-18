@@ -17,7 +17,7 @@ def on_message(mosq, obj, msg):
     data = msg.payload
     json_data = data.decode('utf-8')
     json_data = json.loads(data)
-    epoch_time = int(time.time())
+    epoch_time = int(time.time())*1000
     dat=""
     if(json_data['smoke']):
         dat = json_data['smoke']

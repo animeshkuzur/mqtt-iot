@@ -15,6 +15,12 @@
 	<div id="light" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	<br><Br>
 	<script type="text/javascript">
+
+Highcharts.setOptions({
+    time: {
+        timezoneOffset: -5.5 * 60
+    }
+});
 		$.getJSON(
   './data/smoke.json',
   function (data) {
